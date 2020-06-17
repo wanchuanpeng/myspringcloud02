@@ -1,0 +1,43 @@
+server:
+   port: 8003
+
+# 服务与服务之间相互调用一般都是根据这个name 。
+spring:
+   application:
+      name: myspringcloud02-provider
+   datasource:
+      type: com.zaxxer.hikari.HikariDataSource 
+      url: jdbc:mysql://127.0.0.1:3306/myspringcloud02_8003?useSSL=false&serverTimezone=UTC
+      username: root
+      password: root
+      driverClassName: com.mysql.cj.jdbc.Driver
+   hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 10000
+      connection-test-query: SELECT 1
+      
+mybatis:
+   mapper-locations: classpath:mybatis/mappers/**/*.xml
+   type-aliases-package: com.demo.springcloud02.common.entity.po
+   configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+eureka:
+   client:
+      serviceUrl:
+         #指定服务注册中心的地址
+         defaultZone: http://myspringcloud02-eureka-8761.com:8761/eureka/,http://myspringcloud02-eureka-8762.com:8762/eureka/,http://myspringcloud02-eureka-8763.com:8763/eureka/
+   instance:
+      instance-id: myspringcloud02-provider-8003
+      prefer-ip-address: true     #访问路径可以显示IP地址
+      
+info: 
+  app.name: learning-myspringcloud02
+  company.name: www.learning.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$

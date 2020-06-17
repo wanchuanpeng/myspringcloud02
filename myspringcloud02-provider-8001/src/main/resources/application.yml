@@ -1,0 +1,3 @@
+spring:
+   application:
+      name: myspringcloud02-provider-8001

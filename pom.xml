@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.learning.example</groupId>
+  <artifactId>myspringcloud02</artifactId>
+  <version>${myspringcloud02.version}</version>
+  <packaging>pom</packaging>
+  
+  <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.8.RELEASE</version>
+	</parent>
+	
+	  <properties>
+	 	 <myspringcloud02.version>0.0.1-SNAPSHOT</myspringcloud02.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+    </properties>
+    
+    <!-- spring-cloud所有项目依赖包 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    <build>
+	    <finalName>myspringcloud02</finalName>
+			<resources>
+				<resource>
+					<directory>src/main/resources</directory>
+					<filtering>true</filtering>
+				</resource>
+			</resources>
+        <plugins>
+	        <plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<configuration>
+						<delimiters>
+							<delimit>$</delimit>
+						</delimiters>
+					</configuration>
+				</plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <modules>
+    	<module>myspringcloud02-eureka-8761</module>
+    	<module>myspringcloud02-provider-8001</module>
+    	<module>myspringcloud02-common</module>
+    	<module>myspringcloud02-consumer-8080</module>
+    	<module>myspringcloud02-eureka-8762</module>
+    	<module>myspringcloud02-eureka-8763</module>
+    	<module>myspringcloud02-provider-8002</module>
+    	<module>myspringcloud02-provider-8003</module>
+    	<module>myspringcloud02-consumer-feign-8081</module>
+    	<module>myspringcloud02-consumer-hystrix-dashboard</module>
+    	<module>myspringcloud02-zuul-gateway-9527</module>
+    	<module>myspringcloud02-config-3344</module>
+    </modules>
+</project>

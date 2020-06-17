@@ -1,0 +1,12 @@
+#本机端口
+server:
+   port: 8763
+
+eureka:
+   instance:
+      hostname: myspringcloud02-eureka-8763.com
+   client:
+      register-with-eureka: false   #是否向注册中心注册自己
+      fetch-registry: false   #是否从注册中心查询服务
+      service-url:   #注册中心地址
+         defaultZone: http://myspringcloud02-eureka-8761.com:8761/eureka/,http://myspringcloud02-eureka-8762.com:8762/eureka/

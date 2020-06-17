@@ -1,0 +1,14 @@
+server: 
+   port: 3344 
+
+spring:
+   application:
+      name:  myspringcloud02-config
+   cloud:
+      config:
+         server:
+            git:
+               uri: https://github.com/wanchuanpeng/myspringcloud02.git
+               username: 
+               password: 
+               search-paths: config
